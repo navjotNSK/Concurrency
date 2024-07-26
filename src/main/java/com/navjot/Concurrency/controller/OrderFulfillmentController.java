@@ -42,7 +42,7 @@ public class OrderFulfillmentController {
     }
 
 
-    @GetMapping("/{name}")
+    @GetMapping(value = "/{name}" , produces = { "application/json", "application/xml" })
     public ResponseEntity<List<Order>> getOrderByName(@PathVariable String name){
         return new ResponseEntity<>(orderService.getOrderByName(name), HttpStatusCode.valueOf(200));
     }
