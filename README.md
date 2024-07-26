@@ -2,3 +2,4 @@
 2. Transactional
 3. Scheduler (CRON JOB)
 4. Async
+5. Cacheable 
