@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class SchedulerService {
 
     @Autowired
-    @Qualifier("SynchronisedCounter")
+    @Qualifier("ReentrantLockCounter")
     private Counter counter;
 
     @Async

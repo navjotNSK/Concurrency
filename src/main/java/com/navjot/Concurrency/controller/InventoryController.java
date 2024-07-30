@@ -4,6 +4,7 @@ import com.navjot.Concurrency.dto.Inventory;
 import com.navjot.Concurrency.dto.Order;
 import com.navjot.Concurrency.entity.InventoryEntity;
 import com.navjot.Concurrency.service.InventoryService;
+import com.navjot.Concurrency.util.Audit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @PostMapping
+    @Audit(description = "Post API to save inventory details")
     public ResponseEntity<Inventory> processOrder(@RequestBody Inventory inventory) throws InterruptedException {
         inventoryService.saveInventory(inventory);
         return ResponseEntity.ok(inventory);

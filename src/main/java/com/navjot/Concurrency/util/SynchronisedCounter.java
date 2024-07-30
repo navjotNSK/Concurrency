@@ -1,8 +1,10 @@
 package com.navjot.Concurrency.util;
 
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+@Qualifier
 @Component("SynchronisedCounter")
 public class SynchronisedCounter implements Counter{
 
