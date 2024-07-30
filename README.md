@@ -4,3 +4,5 @@
 4. Async
 5. Cacheable 
 6. Controller vs RestController
+7. Qualifier and Primary
+8. Locks, Synchronised and ReentrantLock
