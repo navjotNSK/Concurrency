@@ -1,0 +1,35 @@
+The choice between @WebMvcTest and @SpringBootTest for testing your Spring Boot applications significantly impacts how you configure and implement your tests. The use of MockBean and mock objects (via libraries like Mockito) varies between these annotations due to the different purposes they serve.
+
+@WebMvcTest
+@WebMvcTest is specialized for testing Spring MVC controllers without starting a complete application context. When using @WebMvcTest, it loads only the relevant components (such as one controller and its direct dependencies if specified) necessary for testing that controller.
+
+Why use @MockBean with @WebMvcTest:
+Spring manages the MVC context in @WebMvcTest, but only the web layer components are loaded.
+Using @MockBean allows you to add mock versions of your beans into the Spring application context, effectively replacing any existing or would-be-real bean with a mocked instance.
+@MockBean automatically resets the mock before each test, ensuring test isolation and eliminating side effects from previous tests.
+@SpringBootTest
+@SpringBootTest, by contrast, loads the entire full application context. This annotation is used for more comprehensive integration testing, ensuring that all components work correctly together.
+
+Why use standard mocks (like Mockito.mock()) with @SpringBootTest:
+In some cases, you might not want to override a bean definition with a mock in the Spring context, but just mock some external components or classes not managed by Spring.
+Sometimes you need a mocked instance only within the body of a test method (or several methods in a row), not as a bean in the Spring context which could affect all tests running within the same context.
+Differences between Mockito mock() and @MockBean
+The key differences lie in their scope, usage, and behavior with the Spring context:
+
+Mockito’s mock():
+
+Creates plain Mockito mocks, which are simple to use outside of the spring context.
+These mocks are not added to the Spring context, meaning they're best used for fine-tuned mock management or when mocking objects that aren't Spring beans.
+Useful for unit tests or when you don't want to pollute the Spring context with mock beans that might not be relevant for all tests.
+@MockBean:
+
+Specifically tailored for use with Spring Boot tests.
+Adds (or replaces) a bean in the Spring context with a mock version.
+Ideal for use cases where Spring dependency injection is used, and where beans might be autowired into different components under test.
+Ensures that any Spring Boot test using the context where @MockBean is defined will automatically have access to the mocked bean, reflecting changes across the entire test suite if necessary.
+Which to Use and When?
+Deciding between mock() and @MockBean depends on your testing requirements:
+
+Use @MockBean within @SpringBootTest and @WebMvcTest when you need to ensure that all components that spring injects (via @Autowired, @Resource, etc.) get the mocked version of a bean.
+Use Mockito’s mock() when you don’t need to involve the Spring context, especially within standard JUnit tests (outside of the Spring context) for isolated units not reliant on Spring injection.
+Understanding these distinctions will help in efficiently setting up your test configurations and leveraging the strengths of Spring Boot's testing capabilities.
