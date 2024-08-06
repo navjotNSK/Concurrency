@@ -15,7 +15,11 @@
 10. Testing -
     Repository Integration Testing - Use @DataJpaTest instead of @SpringBootTest and Autowired repository and TestEntityManager for persisting data. 
     Controller Integration Testing (@SpringBootTest and @AutoConfigureMockMvc) - Use @SpringBootTest and @AutoConfigureMockMvc , specify port and then use restTemplate or mockMvc to test.
-    Controller Unit Testing (@WebMvcTest(OrderFulfillmentController.class))- Use @WebMvcTest(Controller.class),( without ExtendsWith ) and mockMvc to test without specifying ports and all and use @MockBean only and mockMvc to call controller api.
+    Controller Unit Testing (@WebMvcTest(OrderFulfillmentController.class))- Use @WebMvcTest(Controller.class),( without ExtendsWith ) and mockMvc to test without specifying ports and all and use @MockBean 
+    only and mockMvc to call controller api.
     Service Unit Testing - Use @Mock and @InjectMocks for unit testing.
-    Service Integration Testing - Use @Autowired and TestEntityManager for integration testing
+    Service Integration Testing - Use @Autowired and TestEntityManager for integration testing.
+11. Flyway Migration
+12. Profile annotation for switching between dev and prod profiles.   
+    
 
