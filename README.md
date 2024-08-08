@@ -21,5 +21,6 @@
     Service Integration Testing - Use @Autowired and TestEntityManager for integration testing.
 11. Flyway Migration
 12. Profile annotation for switching between dev and prod profiles.   
+13. Usage of OneToMany annotation.
     
 

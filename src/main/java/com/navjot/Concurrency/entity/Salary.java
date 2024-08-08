@@ -18,7 +18,7 @@ import java.util.UUID;
 public class Salary {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    // or 
+    // or
 //    @GeneratedValue(generator = "UUID")
 //    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
 //    @Column(name = "id", updatable = false, nullable = false)
